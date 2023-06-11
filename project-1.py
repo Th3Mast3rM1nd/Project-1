@@ -28,7 +28,7 @@ def start_game():
                     count +=1
                 else:
                     print("You Got it")
-                    print(f" Total attempts : {count}")
+                    print(f"Total attempts : {count}")
                     score = count
                     break
         except ValueError:

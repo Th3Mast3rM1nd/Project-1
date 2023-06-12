@@ -3,8 +3,7 @@ Python Web Development Techdegree
 Project 1 - Number Guessing Game
 --------------------------------
 """
-# installing the cowsay library """pip install cowsay"""
-import cowsay
+
 import random
 
 def start_game():
@@ -17,7 +16,7 @@ def start_game():
             # Asking The User to Enter a number 
             user_input = int(input(("Enter your guessed Number Bettwen 1-12 ")))
             try:
-                if ( user_input > 12 ):
+                if ( user_input > 12 or user_input <= 0 ):
                     # rasing an Exception if The User Enter a Number not on the Range
                     raise Exception("This number is outside the range 1-12 ")
             except Exception as err:
@@ -46,21 +45,25 @@ def start_game():
     # Return the Score Value when the function ends to keep track of the score if the user want to play again 
     return score
 
-# we print a message welcoming the User to the Game useing The cowsay library 
-print(cowsay.get_output_string('tux', 'WELCOME TO THE NUMBER GUESSING GAME'))
+# we print a message welcoming the User to the Game 
+print('WELCOME TO THE NUMBER GUESSING GAME')
 
 # we set the Value of attempts Var to the return value of the Function start_game
 attempts = start_game()
 flag = 1
 # we start a while loop as long as the flag Value dosent equal 0
 while (flag != 0):
+    high_score = attempts
     # we ask the User if want to play again and we convert the valeu to lower case 
     play_again = input("Would you like to play Again (yes|no) : ").lower()
     if ( play_again == "yes"):
-        # we display the last number of attempts the user 
-        print(f"Last Score {attempts} ")
-        # run the start_game function and save the value of the return to the var attempts
-        attempts = start_game()
+        # we display the last number of attempts the user
+        if (attempts <= high_score):
+            print(f"High Score is : {attempts} ")
+            attempts = start_game()
+        else:
+            print(f"High Score is : {high_score} ")
+            attempts = start_game()
     else:
         # otherwise we thank the user and display his last Score
         print(f"Thanks For playing The Game , Your Final Score is {attempts}")

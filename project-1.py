@@ -35,7 +35,6 @@ def start_game():
                 else:
                     # if the random number equal the input number we let the User know 
                     print("You Got it")
-                    print(f"Total attempts : {count}")
                     # safe the value of count which is the number of attempts to the var score 
                     score = count
                     break
@@ -50,23 +49,26 @@ print('WELCOME TO THE NUMBER GUESSING GAME')
 
 # we set the Value of attempts Var to the return value of the Function start_game
 attempts = start_game()
+score_list = []
+score_list.append(attempts)
 flag = 1
 # we start a while loop as long as the flag Value dosent equal 0
 while (flag != 0):
-    high_score = attempts
+    high_score = min(score_list)
     # we ask the User if want to play again and we convert the valeu to lower case 
     play_again = input("Would you like to play Again (yes|no) : ").lower()
     if ( play_again == "yes"):
         # we display the last number of attempts the user
         if (attempts <= high_score):
-            print(f"High Score is : {attempts} ")
+            print(f"High Score is : {high_score} ")
             attempts = start_game()
+            score_list.append(attempts)
         else:
             print(f"High Score is : {high_score} ")
             attempts = start_game()
     else:
         # otherwise we thank the user and display his last Score
-        print(f"Thanks For playing The Game , Your Final Score is {attempts}")
+        print(f"Thanks For playing The Game , Your Final Score is {high_score}")
         # set the value of flag to 0 and end the Loop
         flag = 0
 

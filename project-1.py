@@ -59,13 +59,9 @@ while (flag != 0):
     play_again = input("Would you like to play Again (yes|no) : ").lower()
     if ( play_again == "yes"):
         # we display the last number of attempts the user
-        if (attempts <= high_score):
-            print(f"High Score is : {high_score} ")
-            attempts = start_game()
-            score_list.append(attempts)
-        else:
-            print(f"High Score is : {high_score} ")
-            attempts = start_game()
+         print(f"High Score is : {high_score} ")
+         attempts = start_game()
+         score_list.append(attempts)
     else:
         # otherwise we thank the user and display his last Score
         print(f"Thanks For playing The Game , Your Final Score is {high_score}")
